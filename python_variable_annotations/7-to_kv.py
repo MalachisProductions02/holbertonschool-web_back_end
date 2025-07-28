@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+This module contains the to_kv function that returns a tuple with
+a string and the square of a number as a float.
+"""
+
+
 from typing import Union, Tuple
 
 
