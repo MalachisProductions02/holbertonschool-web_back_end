@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module with element_length function 
+"""Module with element_length function
 that returns tuples of elements and their lengths."""
 
 from typing import Iterable, Sequence, List, Tuple
