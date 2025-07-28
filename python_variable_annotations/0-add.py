@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-add = __import__('0-add').add
+# 0-add.py
 
-print(add(1.11, 2.22) == 1.11 + 2.22)
-print(add.__annotations__)
+def add(a: float, b: float) -> float:
+    return a + b
