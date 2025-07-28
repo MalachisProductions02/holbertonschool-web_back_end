@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-This module contains the function make_multiplier
-which returns a function that multiplies a float by a given multiplier.
+This module contains the function make_multiplier which returns 
+a function that multiplies a float by a given multiplier.
 """
 
 
