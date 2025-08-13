@@ -1,2 +1,2 @@
 // Display number of documents in school
-print(db.school.countDocuments())
+db.school.countDocuments()
