@@ -1,7 +1,7 @@
 // 9-mian.js
 import { listOfStudents } from "./9-hoisting.js";
 
-console.log(listOfStudents.length);
+console.log(listOfStudents.length).toBe(5);
 
 const listPrinted = listOfStudents.map(
   student => student.fullStudentDescription
