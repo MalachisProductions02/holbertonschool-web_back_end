@@ -1,3 +1,4 @@
+// 9-mian.js
 import { listOfStudents } from "./9-hoisting.js";
 
 console.log(listOfStudents.length);
@@ -7,4 +8,3 @@ const listPrinted = listOfStudents.map(
 );
 
 console.log(listPrinted);
-
