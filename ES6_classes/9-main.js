@@ -1,7 +1,7 @@
 // 9-main.js
 import { listOfStudents } from "./9-hoisting.js";
 
-console.log(listOfStudents);
+console.log(listOfStudents.length);
 
 const listPrinted = listOfStudents.map(
   student => student.fullStudentDescription
