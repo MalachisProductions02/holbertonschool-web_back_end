@@ -1,4 +1,4 @@
-// 4-upgrade_grade_by_city.js
+// 4-update_grade_by_city.js
 export default function updateStudentGradeByCity(students, city, newGrades) {
     return students
       .filter((student) => student.location === city)
