@@ -3,32 +3,46 @@ const fs = require('fs');
 
 function countStudents(path) {
   try {
-    const data = fs.readFileSync(path, 'utf-8').trim();
-    const lines = data.split('\n').filter((line) => line.trim() !== '');
+    const content = fs.readFileSync(path, 'utf-8');
 
-    // quitamos encabezado
-    const students = lines.slice(1);
+    // Split, trim, and drop empty lines (trailing blanks are not valid students)
+    const lines = content
+      .split('\n')
+      .map((l) => l.trim())
+      .filter((l) => l.length > 0);
 
-    console.log(`Number of students: ${students.length}`);
-
-    const fields = {};
-    for (const line of students) {
-      const parts = line.split(',');
-      const firstname = parts[0];
-      const field = parts[3];
-
-      if (!fields[field]) {
-        fields[field] = [];
-      }
-      fields[field].push(firstname);
+    if (lines.length <= 1) {
+      console.log('Number of students: 0');
+      return;
     }
 
-    for (const [field, list] of Object.entries(fields)) {
-      console.log(
-        `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`
-      );
+    // Remove header
+    const rows = lines.slice(1);
+
+    // Group by field (4th column) and collect first names (1st column)
+    const byField = {};
+    let total = 0;
+
+    for (const row of rows) {
+      const cols = row.split(',');
+      if (cols.length < 4) continue; // skip malformed rows
+
+      const firstName = cols[0].trim();
+      const field = cols[3].trim();
+      if (!firstName || !field) continue;
+
+      if (!byField[field]) byField[field] = [];
+      byField[field].push(firstName);
+      total += 1;
     }
-  } catch (err) {
+
+    console.log(`Number of students: ${total}`);
+    // Print in insertion order (objects preserve key order for string keys)
+    Object.keys(byField).forEach((field) => {
+      const list = byField[field];
+      console.log(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
+    });
+  } catch (e) {
     throw new Error('Cannot load the database');
   }
 }
