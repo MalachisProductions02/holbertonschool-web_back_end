@@ -1,5 +1,5 @@
 // 0-console.js
-function dispplayMessage(message) {
+function displayMessage(message) {
     console.log(message);
 }
 
